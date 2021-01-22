@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+
+	int n,k,l;
+    cin>>n>>k>>l;
+    vector<int> vec;
+    for(int i=0;i<n;i++)
+    {
+        int input;
+        cin>>input;
+        vec.push_back(input);
+    }
+    sort(vec.begin(),vec.end());
+    int beg = vec[0];
+    int end = vec[n-1];
+    int ans = INT_MAX;
+    for(int i=beg;i<=end;i++)
+    {
+        int diff = 0;
+        int dec = 0;
+        for(int j=0;j<n;j++)
+        {
+            int res = i-vec[j];
+            if(res<0)
+            {
+                dec+= ((-1)*res);
+            }
+            diff+=res;
+        }
+        if(diff>=0)
+        {
+            int result = dec*k + diff*l;
+            if(result<ans)
+        	{
+            	ans = result;
+        	}
+        }
+        
+    }
+    cout<<ans;
+    
+}
